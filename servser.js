@@ -1,7 +1,7 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-07-18 17:41:57
- * @LastEditTime: 2020-07-18 17:58:06
+ * @LastEditTime: 2020-07-18 23:26:22
  * @Description: 
  * @FilePath: \tree-ui\servser.js
  */
@@ -31,25 +31,21 @@ app.get('/getTreeList', (req, res) => {
         id: 2
       },
       {
+        name: '文件夹3',
+        pid: 0,
+        id: 3
+      },
+      {
         name: '文件夹1-1',
         pid: 1,
-        id: 3
+        id: 4
       },
       {
         name: '文件夹2-1',
         pid: 2,
-        id: 4
-      },
-      {
-        name: '文件夹3',
-        pid: 0,
         id: 5
       },
-      {
-        name: '文件夹2-2',
-        pid: 2,
-        id: 6
-      },
+
     ],
     child: [{
         name: '文件夹1',

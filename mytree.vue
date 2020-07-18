@@ -1,13 +1,19 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-07-18 22:26:13
- * @LastEditTime: 2020-07-18 23:10:30
+ * @LastEditTime: 2020-07-18 23:55:01
  * @Description: 
  * @FilePath: \tree-ui\mytree.vue
 --> 
 <template>
   <div>
-    <el-tree :data="allData" v-if="allData.length" default-expand-all :render-content="render"></el-tree>
+    <el-tree
+      :data="allData"
+      v-if="allData.length"
+      default-expand-all
+      :render-content="render"
+      :expand-on-click-node="false"
+    ></el-tree>
   </div>
 </template>
 
@@ -19,7 +25,9 @@ export default {
       type: Array,
       // 默认值数组
       default: () => []
-    }
+    },
+    dectoryDrops: Array,
+    fileDrop: Array
   },
   data() {
     return {
@@ -42,16 +50,33 @@ export default {
     },
     render(h, { node, data, store }) {
       console.log(node, store);
+      // 是文件还是文件夹，显示不同的操作
+      let list = this.isParent(data) ? this.dectoryDrops : this.fileDrop;
       return (
-        <div>
+        <div style={{ width: "100%" }}>
           {this.isParent(data) ? (
-            <i class="el-icon-folder"></i>
+            node.expanded ? (
+              <i class="el-icon-folder-opened"></i>
+            ) : (
+              <i class="el-icon-folder"></i>
+            )
           ) : (
             <i class="el-icon-document"></i>
           )}
 
-          {/*<i class="el-icon-folder-opened"></i>*/}
+          {/**/}
           {data.name}
+
+          <el-dropdown placement="bottom-start" trigger="click">
+            <span class="el-dropdown-link">
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              {list.map(item => (
+                <el-dropdown-item>{item.value}</el-dropdown-item>
+              ))}
+            </el-dropdown-menu>
+          </el-dropdown>
         </div>
       );
     },
@@ -84,5 +109,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" >
+.el-tree {
+  width: 50%;
+}
+.el-dropdown {
+  float: right;
+}
 </style>

@@ -1,13 +1,13 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-07-18 18:20:09
- * @LastEditTime: 2020-07-18 23:09:59
+ * @LastEditTime: 2020-07-18 23:49:27
  * @Description: 
  * @FilePath: \tree-ui\app.vue
 --> 
 <template>
   <div>
-    <my-tree :data="data"></my-tree>
+    <my-tree :data="data" :fileDrop="fileDrop" :dectoryDrops="dectoryDrops"></my-tree>
   </div>
 </template>
 
@@ -17,7 +17,12 @@ import MyTree from "./mytree";
 export default {
   data() {
     return {
-      data: []
+      data: [],
+      fileDrop: [{ text: "rm", value: "删除文件夹" }],
+      dectoryDrops: [
+        { text: "rn", value: "重命名" },
+        { text: "rms", value: "删除文件夹" }
+      ]
     };
   },
   components: { MyTree },
