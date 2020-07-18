@@ -2,19 +2,23 @@
   "name": "tree-ui",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "main": "api.js",
   "dependencies": {
+    "@vue/eslint-config-prettier": "^6.0.0",
     "axios": "^0.19.2",
-    "core-js": "^2.6.11",
+    "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "express": "^4.17.1",
     "lodash": "^4.17.19",
     "vue": "^2.6.11"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "babel-plugin-component": "^1.1.1"
   },
-  "author": "",
   "license": "ISC"
 }
