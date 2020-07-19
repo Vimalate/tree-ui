@@ -1,13 +1,13 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-07-18 18:20:09
- * @LastEditTime: 2020-07-18 23:49:27
+ * @LastEditTime: 2020-07-19 10:48:53
  * @Description: 
  * @FilePath: \tree-ui\app.vue
 --> 
 <template>
   <div>
-    <my-tree :data="data" :fileDrop="fileDrop" :dectoryDrops="dectoryDrops"></my-tree>
+    <my-tree :data="data" :fileDrop="fileDrop" :dectoryDrops="dectoryDrops" :delete="deleteFn"></my-tree>
   </div>
 </template>
 
@@ -24,6 +24,15 @@ export default {
         { text: "rms", value: "删除文件夹" }
       ]
     };
+  },
+  methods: {
+    deleteFn(id) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
   },
   components: { MyTree },
   async mounted() {
