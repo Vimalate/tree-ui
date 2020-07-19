@@ -1,24 +1,34 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-07-18 18:20:09
- * @LastEditTime: 2020-07-19 10:48:53
+ * @LastEditTime: 2020-07-19 12:08:32
  * @Description: 
  * @FilePath: \tree-ui\app.vue
 --> 
 <template>
   <div>
-    <my-tree :data="data" :fileDrop="fileDrop" :dectoryDrops="dectoryDrops" :delete="deleteFn"></my-tree>
+    <my-tree
+      v-bind:data.sync="data"
+      :fileDrop="fileDrop"
+      :dectoryDrops="dectoryDrops"
+      :delete="deleteFn"
+      v-if="data.length"
+    ></my-tree>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import { getTreeList } from "./api";
 import MyTree from "./mytree";
 export default {
   data() {
     return {
       data: [],
-      fileDrop: [{ text: "rm", value: "删除文件夹" }],
+      fileDrop: [
+        { text: "rn", value: "重命名" },
+        { text: "rms", value: "删除文件" }
+      ],
       dectoryDrops: [
         { text: "rn", value: "重命名" },
         { text: "rms", value: "删除文件夹" }
@@ -30,7 +40,7 @@ export default {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-        }, 2000);
+        }, 1200);
       });
     }
   },
